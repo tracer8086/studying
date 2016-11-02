@@ -1,9 +1,6 @@
 class Graph():
 
 	def __init__(self, new_graph = {}):
-		if str(type(new_graph)) != "<class 'dict'>":
-			raise TypeError("Graph must be represented as a dictionary")
-
 		Graph.check_graph(new_graph) #checking new graph for a mutual connectivity of vertices
 
 		self.__graph = new_graph
@@ -28,11 +25,11 @@ class Graph():
 	@staticmethod
 	def check_graph(graph):
 		"""checks a graph for mutual connectivity of vertices and for the """
-		if str(type(graph)) != "<class 'dict'>":
+		if type(graph) != dict:
 			raise TypeError("Graph must be represented as a dictionary")
 
 		for node in graph.keys():
-			if str(type(graph[node])) != "<class 'list'>":
+			if type(graph[node]) != list:
 				raise TypeError("Neighbours must be represented as a list; first detected disparity under a key " + str(node))
 
 		for node in graph.keys():
@@ -44,7 +41,7 @@ class Graph():
 
 	@staticmethod
 	def check_edge(edge):
-		if str(type(edge)) != "<class 'tuple'>":
+		if type(edge) != tuple:
 			raise TypeError("Edge must be represented as a tuple with 2 vertices")
 
 		if not edge:
@@ -98,7 +95,7 @@ new vertex must not be in vertices that are already presented in graph"""
 		if vertex in self.__graph.keys():
 			raise ValueError("Vertex " + str(vertex) + " is alredy in the graph")
 
-		if str(type(neighbours)) != "<class 'list'>":
+		if type(neighbours) != list:
 			raise TypeError("Neighbourhood must be represented as a list")
 
 		self.__graph[vertex] = neighbours
