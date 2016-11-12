@@ -23,7 +23,7 @@ class Graph():
 		return str_rep
 
 	@staticmethod
-	def check_graph(graph):
+	def check_graph(graph: "dictionary of vertices"):
 		"""checks a graph for mutual connectivity of vertices and for the """
 		if type(graph) != dict:
 			raise TypeError("Graph must be represented as a dictionary")
