@@ -170,7 +170,7 @@ new vertex must not be in vertices that are already presented in graph"""
 
 		if connecting_edge:
 			if not ((connecting_edge[0] in self.__graph.keys() and connecting_edge[1] in added_graph.keys()) or (connecting_edge[1] in self.__graph.keys() and connecting_edge[0] in added_graph.keys())): #condition was checked mathematecally
-				raise ValueError("Specified connecting edge " + str(connecting_edge) + " can't exist in ")
+				raise ValueError("Specified connecting edge " + str(connecting_edge) + " can't exist in derivative graph")
 
 			self.add_edge(connecting_edge)
 
