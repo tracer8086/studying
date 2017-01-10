@@ -1,3 +1,4 @@
+#returns sorted list based on several sorted lists of arbitrary length
 def res_sort(*arrs):
 	inds = [0 for i in range(len(arrs))]
 	res, current = [], [0, 0]
