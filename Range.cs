@@ -49,7 +49,7 @@ namespace AlgorithmTools
                     throw new ArgumentException("Delta must be non-zero.");
 
                 if (value > To - From - 1)
-                    throw new ArgumentException("Delta must be less tham difference betwwen From and To.");
+                    throw new ArgumentException("Delta must be less tham difference between From and To.");
 
                 delta = value;
             }
