@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AlgorithmTools
 {
@@ -66,5 +67,9 @@ namespace AlgorithmTools
         {
             return GetEnumerator();
         }
+
+        // Parallel counting.
+        public ParallelLoopResult ParallelLoop(Action<int> method) => Parallel.ForEach(this, method);
+        public ParallelLoopResult ParallelLoop(Action<int, ParallelLoopState> method) => Parallel.ForEach(this, method);
     }
 }
