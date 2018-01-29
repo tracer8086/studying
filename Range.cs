@@ -7,23 +7,11 @@ namespace AlgorithmTools
 {
     public class Range : IEnumerable<int>
     {
-        // Fields of range: [from; to).
-        private int from;
-        private int to;
         private int delta;
-
-        // Range limits are incapsulated in properties to prevent situation when From > To or To < From.
-        public int From
-        {
-            get => from;
-            set => from = value;
-        }
-
-        public int To
-        {
-            get => to;
-            set => to = value;
-        }
+        
+        // Fields of range: [From; To).
+        public int From { get; set; }
+        public int To { get; set; }
 
         // Delta is the counting offset. It denotes difference between two nearby elements.
         public int Delta
@@ -59,7 +47,7 @@ namespace AlgorithmTools
         // Counting.
         public IEnumerator<int> GetEnumerator()
         {
-            for (Current = from; Current < to; Current += Delta)
+            for (Current = From; Current < To; Current += Delta)
                 yield return Current;
         }
 
