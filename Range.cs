@@ -8,7 +8,7 @@ namespace AlgorithmTools
     public class Range : IEnumerable<int>
     {
         private int delta;
-        
+
         // Fields of range: [From; To).
         public int From { get; set; }
         public int To { get; set; }
@@ -29,7 +29,7 @@ namespace AlgorithmTools
 
         // Current value of counter; it is set to from value before counting.
         public int Current { get; set; }
-        
+
         public Range(int to)
         {
             To = to;
@@ -47,8 +47,12 @@ namespace AlgorithmTools
         // Counting.
         public IEnumerator<int> GetEnumerator()
         {
-            for (Current = From; Current < To; Current += Delta)
-                yield return Current;
+            if (From < To)
+                for (Current = From; Current < To; Current += Delta)
+                    yield return Current;
+            else
+                for (Current = From; Current > To; Current += Delta)
+                    yield return Current;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
