@@ -55,6 +55,13 @@ namespace AlgorithmTools
                     yield return Current;
         }
 
+        // Yielding collection elements with indices given by range.
+        public IEnumerable<T> Slice<T>(IList<T> list)
+        {
+            foreach (int index in this)
+                yield return list[index];
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
@@ -63,5 +70,8 @@ namespace AlgorithmTools
         // Parallel counting.
         public ParallelLoopResult ParallelLoop(Action<int> method) => Parallel.ForEach(this, method);
         public ParallelLoopResult ParallelLoop(Action<int, ParallelLoopState> method) => Parallel.ForEach(this, method);
+        // Parallel counting for collections.
+        public ParallelLoopResult ParallelLoop<T>(Action<T> method, IList<T> list) => Parallel.ForEach(this, index => method(list[index]));
+        public ParallelLoopResult ParallelLoop<T>(Action<T, ParallelLoopState> method, IList<T> list) => Parallel.ForEach(this, (index, loopState) => method(list[index], loopState));
     }
 }
